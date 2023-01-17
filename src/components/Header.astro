@@ -1,0 +1,16 @@
+---
+import { MyPopover } from "./HeaderBlogItem";
+import { MobileHeader } from "./MobileHeader";
+
+---
+<header class="flex justify-between items-center px-8 py-3" >
+    <a class="text-3xl font-bold text-blue-700" href="/">Astroid</a>
+    <ul class="lg:flex gap-x-7 hidden  ">
+    <a href="/">About</a>
+    <MyPopover client:visible/>
+    <a href="/contact-us">Contac Us</a>
+    </ul>  
+    <div class="lg:hidden block">
+        <MobileHeader client:visible/>
+    </div>
+</header>

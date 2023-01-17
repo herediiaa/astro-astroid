@@ -1,0 +1,32 @@
+---
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+
+const posts = await Astro.glob<Frontmatter>("./posts/*.md");
+
+interface Frontmatter{
+    title: string
+    thumbnail: string
+    slug: string
+  
+}
+---
+<Layout title="/Blog">
+    <main class="max-w-screen-lg mx-auto mt-7">
+        <h1 class="text-blue-700 text-4xl font-bold">Blog </h1>
+        <p class="text-gray-800 mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores est, itaque quisquam, asperiores, eius totam corrupti perspiciatis consequuntur ipsum nisi voluptate tempore illum nulla eum qui id voluptatibus quaerat aliquam.</p>
+
+        <section class="grid grid-cols-3 gap-5 mt-8">
+            {
+                posts.map((post)=>(
+                    <Card
+                    title={post.frontmatter.title}
+                    thumbnail={post.frontmatter.thumbnail}
+                    slug={post.frontmatter.slug}
+                    description={post.rawContent().slice(0,)}
+                    />
+                ))
+            }
+        </section>
+    </main>
+</Layout>

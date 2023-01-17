@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from '../../public/hero.jpg'
+import Card from "../components/Card.astro";
+
+const posts = await Astro.glob<Frontmatter>("./posts/*.md");
+
+interface Frontmatter{
+    title: string
+    thumbnail: string
+    slug: string
+    date:string
+  
+}
+---
+<Layout title="Home">
+	<main class="max-w-screen-lg mx-auto">
+		<h1 class="text-4xl font-bold text-blue-700 mt-8">Welcome to Astroid</h1>
+		<p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore cumque delectus eaque molestias eveniet distinctio modi incidunt explicabo, dignissimos eum?</p>
+		<!-- <img class="mt-8  rounded-md shadow-md aspect-video" src={Hero} alt="hero">
+ -->
+		<section class="grid md:grid-cols-3 gap-5 mt-8">
+            {
+                /* esto es para ahcer del mas reciente al mas viejo */
+                posts.sort((a,b)=> Date.parse(a.frontmatter.date)- Date.parse(b.frontmatter.date))
+                
+                .map((post)=>(
+                    <Card
+                    title={post.frontmatter.title}
+                    thumbnail={post.frontmatter.thumbnail}
+                    slug={post.frontmatter.slug}
+                    description={post.rawContent().slice(0,30)}
+                    />
+                ))
+            }
+        </section>
+	</main>
+	
+</Layout>

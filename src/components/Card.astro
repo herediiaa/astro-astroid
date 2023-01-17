@@ -1,0 +1,19 @@
+---
+interface Props{
+    thumbnail: string
+    title: string
+    slug: string
+    description: string
+}
+const {thumbnail, title, slug,description} = Astro.props
+---
+<div>
+    <div>
+        <img class="aspect-video rounded-t-md" src={thumbnail} alt="postCard">
+    </div>
+    <div class="px-3 py-4 border">
+        <h1 class="font-bold text-blue-700 text-xl">{title}</h1>
+        <p class="my-3">{description}</p>
+        <a class="text-blue-700 " href={`posts/${slug}`}>More Info</a>
+    </div>
+</div>
