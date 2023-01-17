@@ -1,6 +1,6 @@
 # Welcome to [Astro](https://astro.build)
 
-[![Open in StackBlitz](/astroid-image)]
+[![Open in StackBlitz](public/astroid-image)]
 
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
